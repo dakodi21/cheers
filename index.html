@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheers Healthy Drinking Water</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Plus+Jakarta+Sans:wght@500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Caveat:wght@600;700&family=DM+Serif+Display&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <!-- Logo asli: simpan file logo.png di folder yang sama dengan index.html. Kalau belum ada, tampil logo teks. -->
+  <a href="#home" class="logo" aria-label="CV Ari Makmur">
+    <svg id="logoSvg" viewBox="0 0 270 64" role="img" aria-label="CV Ari Makmur">
+      <text x="2" y="40" font-family="Baloo 2, Arial Rounded MT Bold, sans-serif" font-weight="800" font-size="36" letter-spacing="-1" fill="#d9232d">CV Ari Makmur</text>
+      <path d="M252 6c6 8 9 12 9 17a9 9 0 0 1-18 0c0-5 3-9 9-17z" fill="#1d8fe0"/>
+      <text x="4" y="58" font-family="Jost, Arial, sans-serif" font-weight="600" font-size="12.5" letter-spacing=".2" fill="#d9232d">Healthy Drinking Water</text>
+    </svg>
+  </a>
+  <nav>
+    <a href="#katalog">Katalog</a>
+    <a href="#pesan">Pesan</a>
+    <a href="#testimoni">Testimoni</a>
+  </nav>
+  <button class="cart-btn" id="openCart" aria-label="Buka keranjang">Keranjang <span id="cartCount">0</span></button>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Segar tiap tegukan, tinggal klik langsung diantar.</h1>
+    <p class="lead">Cheers berasal dari mata air terlindungi, diproduksi higienis dengan teknologi modern tanpa bahan kimia tambahan. Pilih Natural atau Alkaline, dari gelas sampai galon, bayar Cash atau QRIS.</p>
+    <div class="hero-cta">
+      <a href="#pesan" class="btn">Pesan Sekarang</a>
+      <a href="#katalog" class="btn outline">Lihat Katalog</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img id="heroImg" alt="Cheers air minum dalam berbagai ukuran botol">
+  </div>
+  </section>
+
+<section class="perks">
+  <div><strong>Natural &amp; Alkaline</strong><span>Pilih air mineral alami atau pH 8,5+</span></div>
+  <div><strong>10 pilihan produk</strong><span>Gelas &amp; botol 220 ml sampai 1,5 L, plus galon Alkaline</span></div>
+  <div><strong>Cash atau QRIS</strong><span>Diantar ke rumah, ongkir Rp600 per dus</span></div>
+</section>
+
+<section class="section" id="katalog">
+  <h2>Katalog produk</h2>
+  <p class="sub">Harga per dus (galon per galon). Ongkir Rp600 per dus.</p>
+  <div class="filters">
+    <button class="chip active" data-f="all">Semua</button>
+    <button class="chip" data-f="Natural">Natural</button>
+    <button class="chip" data-f="Alkaline">Alkaline</button>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section alt" id="pesan">
+  <h2>Form pemesanan</h2>
+  <p class="sub">Isi data di bawah, lalu klik pesan. Pesanan terkirim ke WhatsApp admin.</p>
+  <div class="order">
+    <div class="box summary">
+      <h3>Pesanan kamu</h3>
+      <div id="orderList" class="order-list"></div>
+      <div class="sum-rows">
+        <div class="total-row small"><span>Subtotal</span><span id="orderSubtotal">Rp0</span></div>
+        <div class="total-row small"><span>Ongkir</span><span id="orderShip">Rp0</span></div>
+        <div class="total-row grand"><span>Total bayar</span><strong id="orderTotal">Rp0</strong></div>
+      </div>
+      <p class="note">Ongkir Rp600 per dus, sudah dihitung otomatis di total bayar.</p>
+    </div>
+
+    <form class="box" id="orderForm" novalidate>
+      <label>Nama lengkap<input id="fName" required placeholder="Contoh: Budi Santoso"></label>
+      <label>Nomor WhatsApp<input id="fPhone" required inputmode="tel" placeholder="08xxxxxxxxxx"></label>
+      <label>Alamat pengantaran<textarea id="fAddress" rows="3" required placeholder="Jalan, nomor, RT/RW, kelurahan"></textarea></label>
+      <fieldset>
+        <legend>Metode pembayaran</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="pay" value="cash" checked><span class="opt-body"><b>Cash</b><small>Bayar ke kurir saat barang tiba</small></span></label>
+          <label class="opt"><input type="radio" name="pay" value="qris"><span class="opt-body"><b>QRIS</b><small>Scan setelah pesan</small></span></label>
+        </div>
+      </fieldset>
+      <label>Catatan (opsional)<input id="fNote" placeholder="Contoh: antar sore hari"></label>
+      <p class="error" id="formError" role="alert"></p>
+      <button type="submit" class="btn full">Pesan via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<section class="section" id="testimoni">
+  <div class="testi-head">
+    <div>
+      <h2>Kata pelanggan</h2>
+      <p class="sub">Geser untuk melihat testimoni lainnya, klik untuk melihat detail.</p>
+    </div>
+    <div class="arrows">
+      <button id="testiPrev" aria-label="Sebelumnya">&#8592;</button>
+      <button id="testiNext" aria-label="Berikutnya">&#8594;</button>
+    </div>
+  </div>
+  <div class="testi-track" id="testiTrack" tabindex="0" aria-label="Daftar testimoni"></div>
+</section>
+
+<footer>Natanael Richie Arahkata | 2026 | Mahasiswa Bisnis Digital</footer>
+
+<a href="#pesan" class="float-cta" id="floatCta" hidden>Lanjutkan pesanan &middot; <span id="floatTotal">Rp0</span></a>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Keranjang">
+  <div class="drawer-head"><h3>Keranjang</h3><button id="closeCart" aria-label="Tutup">&times;</button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="drawer-foot">
+    <div class="total-row small"><span>Subtotal</span><span id="cartSub">Rp0</span></div>
+    <div class="total-row small"><span>Ongkir</span><span id="cartShip">Rp0</span></div>
+    <div class="total-row"><span>Total bayar</span><strong id="cartTotal">Rp0</strong></div>
+    <a href="#pesan" class="btn full" id="toForm">Lanjut isi data</a>
+  </div>
+</aside>
+
+<div class="modal" id="detailModal" aria-hidden="true">
+  <div class="modal-box detail" role="dialog" aria-modal="true" aria-labelledby="dName">
+    <button class="x" id="closeDetail" aria-label="Tutup">&times;</button>
+    <img id="dImg" alt="">
+    <div class="d-body">
+      <span class="tag" id="dTag"></span>
+      <h3 id="dName"></h3>
+      <p class="d-desc" id="dDesc"></p>
+      <dl class="d-specs" id="dSpecs"></dl>
+      <div class="price" id="dPrice"></div>
+      <div class="d-buy">
+        <div class="qty-pick"><button id="dMinus" aria-label="Kurangi">-</button><span id="dQty">1</span><button id="dPlus" aria-label="Tambah">+</button></div>
+        <button class="btn" id="dAdd">Tambah ke keranjang</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="testiModal" aria-hidden="true">
+  <div class="modal-box tdetail" role="dialog" aria-modal="true" aria-label="Detail testimoni">
+    <button class="x" id="closeTesti" aria-label="Tutup">&times;</button>
+    <div class="wa-bg" id="tBubble"></div>
+    <img id="tImg" alt="Tangkapan layar testimoni pelanggan" hidden>
+  </div>
+</div>
+
+<div class="modal" id="payModal">
+  <div class="modal-box">
+    <h3 id="payTitle">Pesanan diterima</h3>
+    <p id="payText"></p>
+    <div class="pay-amount" id="payAmount">Rp0</div>
+    <p class="note" id="payNote"></p>
+    <div id="qrisWrap" hidden><div class="tabs"><button type="button" class="tab active" id="tabStatic">QRIS asli</button><button type="button" class="tab" id="tabDyn">Nominal otomatis (coba)</button></div><img id="qrisImg" alt="QRIS Cheers dengan nominal otomatis" class="qris"><p class="note" id="qrisCap"></p><button type="button" class="btn ghost full" id="copyAmt">Salin nominal</button></div>
+    <a class="btn full" id="proofBtn" target="_blank" rel="noopener" hidden>Kirim bukti bayar ke WhatsApp</a>
+    <button type="button" class="btn full" id="invoiceBtn" hidden>Download Invoice</button>
+    <a class="btn ghost full" id="resendBtn" target="_blank" rel="noopener">WhatsApp belum terbuka? Kirim pesanan lagi</a>
+    <button class="link" id="closePay">Tutup</button>
+  </div>
+</div>
+
+<script src="images.js"></script>
+<script src="qr.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
